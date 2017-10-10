@@ -1,6 +1,6 @@
-**JSON ADAPTER**
+# JSON ADAPTER
 
-# 이건 뭐죠?
+## 이건 뭐죠?
 * Client단에서 Backend Language에 종속되지 않고 하나의 JavaScript 소스만으로 Database까지를 다룰 수 있습니다.
 * ES5 이하의 자잘한 홈페이지 튜닝 이슈를 빠르게 쳐낼 수 있습니다.
 * Frontend - Backend를 디자이너도 혼자 처리할 수 있게 하는 게 목적입니다.
