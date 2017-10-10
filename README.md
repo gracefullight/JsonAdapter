@@ -18,7 +18,7 @@ jQuery
 
 # 사용법
 db라는 전역 namespace를 사용합니다.
-모든 ajax request는 [jQuery deferred Object](https://api.jquery.com/jquery.deferred/)를 반환합니다.
+모든 Request는 [jQuery deferred Object](https://api.jquery.com/jquery.deferred/)를 반환합니다.
 
 ## GET
 이 메소드는 SELECT 쿼리만 실행 가능합니다.
