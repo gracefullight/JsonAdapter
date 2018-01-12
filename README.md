@@ -13,14 +13,18 @@
   - [FILE](#file)
   - [FILL](#fill)
   - [FORMAT](#format)
-- [보완점](#%EB%B3%B4%EC%99%84%EC%A0%90)
+- [TODO](#todo)
+  - [JS](#js)
+  - [PHP](#php)
+  - [ASP](#asp)
 
 ## 이건 뭐죠?
 * Client단에서 Backend Language에 종속되지 않고 하나의 JavaScript 소스만으로 Database까지를 다룰 수 있습니다.
+* lagacy php나 asp 코드들은 아주 중구난방하게 되어있는데 (개발 기간보다 분석이 더 오래걸리는) 이걸 해결할 수 있습니다.
 * ES5 이하의 자잘한 홈페이지 튜닝 이슈를 빠르게 쳐낼 수 있습니다.
 * Frontend - Backend를 디자이너도 혼자 처리할 수 있게 하는 게 목적입니다.
 * 템플릿 엔진과 함께라면 더 빠른 개발 속도를 낼 수 있습니다.
-* Mybatis의 형식을 차용해 JS와 XML에 쿼리만 넣으면 됩니다.
+* Mybatis의 형식을 차용해 XML에 쿼리만 넣고 JS의 메소드 호출하면 됩니다.
 
 ## 현재까지 지원하는 언어
 * PHP (완벽한 호환)
@@ -137,7 +141,7 @@ db.promise.end()
 ```
 
 ## FILE
-비동기 파일 업로드를 지원합니다. 
+비동기 파일 업로드를 지원합니다.
 HTML5 file upload가 사용가능하면 나이스한 방법으로 업로드되고, 아닐 경우 [jQuery Form Plugin](http://malsup.com/jquery/form/)를 생각하시면 됩니다.
 
 ``` js
@@ -177,7 +181,39 @@ var response = db.format.innerJoin(data, data2, 'column')
 // response
 ```
 
-# 보완점
-* CSRF 공격에 대한 보안
+# TODO
+* CSRF 공격에 대한 보안 => content-type json으로 처리
+
+## JS
 * Long polling
-* PHP의 경우 mysql, mysqli, pdo 연결 모두 지원
+* `$.fn.html`을 override해 html을 입력할 땐 `db.helper.dangerousHtml('element id,class', html)` 함수로 입력하게,
+  나머지는 `db.helper.html()`로 `$.fn.text`와 똑같은 기능을 하게끔 (이 작업으로 서버에서 xss replacer 부분을 제거할 수 있을 듯)
+* pagination을 서버에선 `laravel`처럼 반환해주고 JS 단에서 처리가 가능하게 변경하기
+
+``` json
+{
+  "total": 50,
+  "per_page": 15,
+  "current_page": 1,
+  "last_page": 4,
+  "from": 1,
+  "to": 15,
+  "data": [
+    {
+      // Result Object
+    },
+    {
+      // Result Object
+    }
+  ]
+}
+```
+
+## PHP
+* mysql, mysqli, pdo 연결 모두 지원
+* Classify
+
+## ASP
+* 기본 기능 추가
+* 파일업로드 컴포넌트를 무료버전의 좋은 걸 찾아야한다
+* Classify
